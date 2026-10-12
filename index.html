@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kids Revision Hub</title><style>
 :root{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#203047;background:#f5f7fc}*{box-sizing:border-box}body{margin:0}.wrap{max-width:920px;margin:auto;padding:36px 18px}header{text-align:center;margin-bottom:30px}h1{font-size:2rem;margin:0 0 8px}h2{font-size:1.25rem}p{color:#5d6b7b}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{border:1px solid #dce4ee;background:#fff;border-radius:16px;padding:22px;box-shadow:0 3px 15px #182f4c0c}.pick{cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}.pick:hover,.pick:focus-visible{outline:3px solid #a7d5ed}.small{font-size:.9rem}.tag{display:inline-block;background:#e6f4ef;color:#176a4e;border-radius:50px;padding:4px 10px;font-size:.8rem}.button{display:inline-block;background:#155e75;color:white;text-decoration:none;border:0;border-radius:9px;padding:12px 17px;font:inherit;cursor:pointer}.button:disabled{opacity:.5;cursor:not-allowed}.ghost{background:#e8eef5;color:#22374e}.hidden{display:none}.quiz{display:flex;gap:12px;align-items:center;justify-content:space-between;border-top:1px solid #e2e8f0;padding:15px 0;flex-wrap:wrap}input{font:inherit;padding:10px;border:1px solid #a8b8c9;border-radius:8px;width:100%;max-width:260px}footer{margin-top:30px;font-size:.85rem;color:#64748b}@media print{.button{display:none}}
 </style></head><body><main class="wrap"><header><h1>📚 Kids Revision Hub</h1><p>Choose your name to open your form's revision exercises.</p></header>
-<section id="choose"><h2>Who's practising today?</h2><div id="studentCards" class="grid"></div><p class="small">Parent: edit the <code>STUDENTS</code> list in this file to change nicknames.</p></section>
+<section id="choose"><h2>Who's practising today?</h2><div id="studentCards" class="grid"></div></section>
 <section id="dashboard" class="hidden"><button class="button ghost" onclick="back()">← Switch student</button><h2 id="greeting"></h2><p id="formLabel"></p><div id="subjects" class="grid"></div></section>
 <footer>Use nicknames only. Quiz questions and answer keys are publicly viewable on GitHub Pages. Scores are sent to your family's Google Sheet after submission; confirm receipt there.</footer></main>
 <script>
@@ -9,7 +9,9 @@
 const STUDENTS=[{name:"Form 1 Kid",form:1},{name:"Form 2 Kid",form:2}];
 // Add new quizzes here. The file must exist at the path shown.
 const QUIZZES=[
- {form:2,subject:"History 历史",chapter:"单元3：英国势力入侵马来半岛",title:"GC练习3 · 10 questions",file:"form2/history/unit3.html"}
+ {form:2,subject:"History 历史",chapter:"单元3：英国势力入侵马来半岛",title:"GC练习3 · 10 questions",file:"form2/history/unit3.html"},
+ {form:2,subject:"Sejarah",chapter:"Bab 7 · 7.1 & 7.2",title:"Exam Revision · Notes, Objective & KBAT",file:"form2/sejarah/bab7-exam-revision.html"},
+ {form:2,subject:"Sejarah",chapter:"Bab 7 · Kesultanan Melayu",title:"Quiz · 20 MCQ & Written",file:"form2/sejarah/bab7-kesultanan-melayu-quiz.html"}
 ];
 let current=null;
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

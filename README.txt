@@ -1,9 +1,4 @@
-Kids Revision Hub
-
-Upload index.html and the form2 folder to the ROOT of your GitHub repository.
-
-Edit index.html: STUDENTS = nicknames/form, QUIZZES = new quiz links.
-Form 2 History Unit 3: form2/history/unit3.html
-The selected nickname is passed to the quiz URL and prefilled in its student field.
-Do not use full names. Github Pages quiz content is public.
-Results are sent to your Google Apps Script endpoint; verify in the Sheet.
+Kids Revision Hub - upload index.html and form2 folder to GitHub repository root.
+Use nicknames only. Existing History Unit 3 and two Sejarah Bab 7 quizzes included.
+Google Sheet records only objective MCQ scores; written/KBAT answers are self-check only.
+The two Sejarah quizzes include answer keys in the public HTML source.
