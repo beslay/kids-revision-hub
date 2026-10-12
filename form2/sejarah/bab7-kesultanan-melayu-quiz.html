@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bab 7 - Kesultanan Melayu Pahang, Perak, Terengganu dan Selangor</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f7fb;color:#24324a;margin:0}.wrap{max-width:900px;margin:auto;padding:24px}.hero{background:#244a73;color:white;padding:25px;border-radius:18px}.card{background:white;padding:20px;margin:18px 0;border-radius:15px;box-shadow:0 3px 14px #0001}.q{margin:22px 0;padding-bottom:18px;border-bottom:1px solid #ddd}.opt{display:block;padding:7px}.btn{border:0;border-radius:10px;padding:12px 18px;background:#244a73;color:#fff;font-weight:bold;cursor:pointer;margin:5px}.secondary{background:#697b91}.correct{background:#dcf5df}.wrong{background:#ffe0e0}.feedback{font-weight:bold;margin-top:8px}.answer{display:none;background:#edf5ff;padding:12px;border-left:4px solid #244a73;margin-top:10px;white-space:pre-wrap}textarea{width:96%;min-height:95px;padding:10px;border:1px solid #aaa;border-radius:8px}.score{font-size:1.2em;font-weight:bold;margin:15px 0}.tag{display:inline-block;background:#e5eef8;color:#244a73;padding:5px 9px;border-radius:99px;margin:3px;font-size:.9em}
+</style></head><body><div class="wrap">
+<div class="hero"><h1>Bab 7: Kesultanan Melayu Pahang, Perak, Terengganu dan Selangor</h1><p>Latihan interaktif berdasarkan soalan yang diberikan. Bahagian A boleh disemak secara automatik. Bahagian B dan C menyediakan cadangan jawapan untuk semakan kendiri.</p><span class="tag">Bahagian A: 20 soalan</span><span class="tag">Bahagian B & C: Struktur/Esei</span></div>
+<div class="card"><h2>Bahagian A — Jawab semua soalan</h2><div class="student-panel" style="background:#eaf3fc;border-radius:12px;padding:14px;margin:15px 0"><label for="studentName">Student nickname / Nama pelajar</label><input id="studentName" maxlength="50" style="padding:10px;border:1px solid #a6bacd;border-radius:8px;width:100%;max-width:280px" placeholder="Enter nickname"><div id="sendStatus" style="font-size:.9em;margin-top:8px" role="status"></div></div><div id="mcq"></div><button class="btn" onclick="submitAndCheck(this)">Semak Jawapan</button><button class="btn secondary" onclick="shuffleMCQ()">🔀 Shuffle / Cuba Semula</button><div class="score" id="score"></div></div>
+<div class="card"><h2>Bahagian B & C — Latihan Bertulis</h2><div id="written"></div></div>
+</div>
+<script>
+const mcq=[
+["Di manakah terletaknya pusat pemerintahan Kesultanan Pahang semasa pemerintahan Sultan Muhammad Shah?",["Pekan","Bera","Kuantan","Kuala Lipis"],0],
+["Siapakah sultan yang telah membuka kerajaan menjadi pengasas kerajaan Pahang pada tahun 1470?",["Sultan Muzaffar Shah","Sultan Mahmud Shah","Sultan Mansur Shah","Seri Bija Diraja"],2],
+["Siapakah Seri Bija Diraja?",["Putera Sultan Mansur Shah","Laksamana kerajaan Pahang","Wakil untuk mentadbir Pahang","Bendahara Kesultanan Melayu Melaka"],2],
+["Maklumat berikut merujuk sumbangan sultan yang memerintah Pahang: memperkenalkan sistem pewarisan takhta dan memperkemas sistem perundangan. Siapakah sultan tersebut?",["Sultan Mansur Shah","Sultan Muzaffar Shah","Sultan Mahmud Shah","Sultan Abdul Jalil Shah"],3],
+["Mengapakah Kesultanan Johor Riau menubuhkan Pahang dari tahun 1614 hingga tahun 1884?",["Hubungan baik antara Kesultanan Johor dengan Pahang","Perebutan kuasa antara pembesar Kesultanan Pahang","Kesultanan Johor Riau meluaskan empayar jajahan ke Pahang","Sultan Abdul Ghafur Muhaiyuddin Shah tidak meninggalkan waris"],3],
+["Maklumat berikut merujuk gelaran seorang sultan di Pahang: Sultan Ahmad Al-Mu'azzam Shah. Siapakah sultan yang menggunakan gelaran tersebut?",["Sultan Muzaffar Shah","Sultan Mahmud Shah","Sultan Abdul Jalil Shah","Bendahara Siwa Raja Wan Ahmad"],3],
+["Apakah peristiwa yang menyebabkan Sultan Mahmud meninggalkan takhta dan menyerahkan pemerintahan?",["Serangan Portugis","Kemaraan Belanda","Serangan Bugis","Serangan Siam"],1],
+["Siapakah pembesar Perak yang mengiringi Sultan Mahmud Shah sehingga ke Kampar, Sumatera?",["Tun Saban","Tun Temong","Tun Zainal Abidin","Nakhoda Kassim"],0],
+["Apakah alat kebesaran diraja yang dibawa oleh Raja Muzaffar untuk berangkat ke Perak?",["Sebilah Pedang Cura Si Manja Kini","Tombak Berambu","Keris Taming Sari","Keris Pendek Diraja"],0],
+["Maklumat berikut merujuk seorang pembesar di Perak: pembesar asal wilayah di negeri Perak; menjemput Raja Muzaffar untuk ditabalkan sebagai sultan. Siapakah beliau?",["Tun Saban","Tok Temong","Seri Bija Diraja","Nakhoda Kassim"],0],
+["Siapakah Tun Zainal Abidin yang telah dianugerahkan jajahan Terengganu oleh Sultan Abdul Jalil?",["Putera Raja Patani","Putera Raja Kelantan","Putera Sultan Abdul Jalil","Putera Tun Habib Abdul Majid"],3],
+["Siapakah tokoh agama yang mengiringi Tun Zainal Abidin untuk berangkat ke Terengganu? I Habib Daud II Haji Puteh III Imam Ghani IV Datuk Wan Imam Mahmud",["I dan II","I dan IV","II dan III","III dan IV"],1],
+["Di manakah pusat pemerintahan Sultan Zainal Abidin I yang pertama?",["Besut","Paka","Kemaman","Kuala Berang"],3],
+["Maklumat berikut merujuk sumbangan salah seorang sultan kerajaan Terengganu: baginda memperkenalkan undang-undang bagi mewujudkan keadilan dalam pemerintahan dan mengekalkan keamanan. Siapakah sultan yang dimaksudkan?",["Sultan Zainal Abidin I","Sultan Zainal Abidin II","Sultan Zainal Abidin III","Sultan Zainal Abidin IV"],2],
+["Siapakah tokoh yang telah dilantik oleh Sultan Muzaffar Shah sebagai penghulu sebelum tokoh tersebut menjadi Bendahara Melaka yang masyhur?",["Tun Zainal","Tun Perak","Tun Saban","Raja Kuning"],1],
+["Maklumat berikut merupakan kancing Sultan Selangor yang merujuk kepada: Sultan Alaiddin Sulaiman Shah (1898-1938). Apakah sumbangan baginda kepada negeri Selangor? I Membina jalan kereta api II Membina terowong bawah tanah III Menubuhkan pasukan keselamatan IV Menggubal undang-undang tubuh",["I dan II","I dan IV","II dan III","II dan IV"],3],
+["Maklumat berikut berkaitan dengan ciri-ciri sistem pemerintahan sebuah kesultanan: Raja dipilih; waris takhta; perlantikan kerabat; Majlis Mesyuarat Kerajaan Negeri. Kesultanan manakah yang mewarisi ciri-ciri tersebut?",["Kesultanan Perak","Kesultanan Pahang","Kesultanan Selangor","Kesultanan Terengganu"],2],
+["Panji diraja berikut merupakan lambang kedaulatan kesultanan sebuah pemerintahan. Apakah kesultanan yang diwakili oleh panji tersebut?",["Kesultanan Terengganu","Kesultanan Selangor","Kesultanan Pahang","Kesultanan Perak"],3],
+["Gambar berikut menunjukkan keris yang menjadi alat kebesaran Kesultanan Selangor. Apakah nama keris tersebut?",["Keris Taming Sari","Keris Pendek Diraja","Keris Panjang Diraja","Keris Panjang Beruk"],1],
+["Asas kepada kekuatan undang-undang bertulis di negeri Selangor ialah sistem pentadbiran. Apakah Majlis tersebut?",["Menguruskan pentadbiran kehakiman","Memastikan struktur pentadbiran kemas","Memudahkan sultan membuat keputusan","Menjaga adat istiadat"],2]
+];
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+let quiz=[];
+
+function prepareQuiz(){
+  // Make a fresh copy so the original questions/answers stay unchanged.
+  quiz=mcq.map(q=>{
+    const options=q[1].map((text,index)=>({text,correct:index===q[2]}));
+    shuffleArray(options);
+    return {question:q[0],options};
+  });
+  shuffleArray(quiz);
+}
+
+function render(){
+  let h='';
+  quiz.forEach((q,i)=>{
+    h+=`<div class="q" id="q${i}"><b>${i+1}. ${q.question}</b>`;
+    q.options.forEach((o,j)=>h+=`<label class="opt"><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o.text}</label>`);
+    h+=`<div class="feedback" id="f${i}"></div></div>`;
+  });
+  document.getElementById('mcq').innerHTML=h;
+}
+
+function checkMCQ(){
+  let s=0;
+  quiz.forEach((q,i)=>{
+    const el=document.querySelector(`input[name=q${i}]:checked`);
+    const f=document.getElementById('f'+i);
+    const box=document.getElementById('q'+i);
+    box.classList.remove('correct','wrong');
+    const correctIndex=q.options.findIndex(o=>o.correct);
+    if(el && +el.value===correctIndex){
+      s++;
+      f.textContent='✓ Betul';
+      box.classList.add('correct');
+    }else{
+      f.textContent='✗ Jawapan: '+String.fromCharCode(65+correctIndex)+'. '+q.options[correctIndex].text;
+      box.classList.add('wrong');
+    }
+  });
+  document.getElementById('score').textContent=`Skor: ${s} / ${quiz.length} (${Math.round(s/quiz.length*100)}%)`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function shuffleMCQ(){
+  prepareQuiz();
+  render();
+  document.getElementById('score').textContent='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const written=[
+["B1(a) Apakah sumbangan Sultan Zainal Abidin II dalam memerintah Terengganu?","Sultan Zainal Abidin II merupakan antara Sultan Terengganu yang masyhur. Baginda memperkemas sistem perundangan dengan menggubal undang-undang tubuh."],
+["B1(b) Kesultanan Terengganu dan Kesultanan Johor Riau mempunyai hubungan rapat. Jelaskan bukti yang menunjukkan bahawa Kesultanan Terengganu diasaskan oleh keluarga diraja yang berasal daripada susur galur Bendahara Johor.","Terengganu merupakan wilayah naungan Kesultanan Johor Riau. Sejak abad ke-16, pihak Johor menghantar wakil untuk mentadbir Terengganu. Sultan Abdul Jalil menganugerahkan Terengganu kepada Tun Zainal Abidin I. Tun Zainal Abidin I merupakan putera Tun Habib Abdul Majid (Bendahara Johor Riau yang ke-11)."],
+["B1(c) Kesultanan Selangor telah memindahkan pusat pentadbirannya sebanyak empat kali bermula di Kuala Selangor dibuka pada 1766 oleh Raja Lumu. Pada pendapat anda, apakah kriteria yang penting dalam pembinaan sesebuah pusat pentadbiran?","Lokasi yang strategik; terlindung daripada ancaman bencana alam; sumber banjir dan hutan; memiliki kemudahan yang selesa di sekitarnya; agar rakyat dan pelawat asing mudah untuk berurusan; kemudahan pengangkutan awam seperti LRT dan komuter; memiliki kawasan perumahan yang mencukupi; supaya urusan pengangkutan dan perniagaan berjalan lancar."],
+["B2(a) Apakah jenis karya persuratan yang dihasilkan oleh masyarakat pada zaman kegemilangan Kesultanan Perak, Pahang, Terengganu dan Selangor?","Karya sejarah; karya agama; karya perubatan; karya persuratan."],
+["B2(b) Kepelbagaian jenis persuratan yang dihasilkan memberikan kesan positif terhadap pembinaan tamadun Melayu. Berikan justifikasi anda.","Kepelbagaian jenis karya yang dihasilkan menunjukkan perkembangan kebudayaan masyarakat, ketinggian ilmu dan pemikiran serta menjadi sumber pengetahuan kepada generasi seterusnya. (Mana-mana jawapan munasabah.)"],
+["B2(c) Sebagai seorang murid, apakah peranan anda untuk memupuk minat membaca karya klasik dan sastera rakyat dalam kalangan remaja pada hari ini?","Saya akan berkongsi masakan tradisional untuk keluarga angkat saya; menulis nasi lemak; mengajar mereka bahasa Melayu; mengajar perbualan harian; supaya mereka tahu keindahan bahasa kita; seperti bersajak dan berpantun; persembahan kebudayaan; sesuatu yang menarik kerana melibatkan muzik; tarian Zapin, Sumazau dan sebagainya. (Mana-mana jawapan munasabah.)"],
+["C1(a) Terangkan secara ringkas tentang pengasasan Kesultanan Pahang.","Sultan Muhammad Shah dilantik menjadi Sultan Pahang pertama; baginda berangkat dari Melaka ke Pahang; baginda membawa alat kebesaran seperti gendik diraja dan sebahagian nobat; pusat pemerintahan pertama di Pekan; baginda memperkenalkan sistem pewarisan takhta; baginda memperkemas sistem perundangan."],
+["C1(b) Huraikan pelibatan keluarga Bendahara Johor dalam pemerintahan Kesultanan Pahang.","Selepas kemangkatan Sultan Mahmud Shah, pemerintahan Pahang dikuasai keluarga Bendahara Johor. Tun Abdul Jalil ditabalkan sebagai Sultan Pahang. Kesultanan Pahang kemudiannya mempunyai hubungan rapat dengan Kesultanan Johor Riau sebelum munculnya Kesultanan Pahang moden."],
+["C1(c) Sebagai rakyat yang cinta akan negara, mengapakah kita perlu mempertahankan institusi beraja di negara kita?","Institusi beraja merupakan warisan negara dan lambang kedaulatan. Raja menjadi simbol perpaduan, menjaga kestabilan, adat dan kepentingan rakyat serta membantu memastikan pemerintahan berjalan teratur. (Mana-mana jawapan munasabah.)"],
+["C2(a) Jelaskan adat keputeraan yang menjadi amalan tradisi Kesultanan Melayu.","Adat keputeraan melibatkan istiadat yang tersusun bagi menyambut kelahiran putera/puteri diraja, termasuk adat berkaitan kelahiran dan tempoh tertentu mengikut tradisi kesultanan."],
+["C2(b) Huraikan adat pemakaman dengan memberikan contoh adat pemakaman di negeri Selangor.","Adat pemakaman diraja dilaksanakan mengikut protokol dan istiadat kesultanan. Jenazah diraja diurus dan dimakamkan di makam diraja dengan upacara tertentu sebagai penghormatan kepada pemerintah."],
+["C2(c) Sekiranya anda merupakan seorang murid program pertukaran budaya yang ditempatkan di luar negara, apakah yang wajar anda lakukan untuk mempromosi budaya negara kita?","Berkongsi makanan tradisional; menulis atau memperkenalkan nasi lemak; mengajar bahasa Melayu dan perbualan harian; memperkenalkan sajak dan pantun; membuat persembahan kebudayaan; memperkenalkan tarian seperti Zapin dan Sumazau. (Mana-mana jawapan munasabah.)"]
+];
+function renderWritten(){let h='';written.forEach((x,i)=>{h+=`<div class="q"><b>${x[0]}</b><textarea placeholder="Taip jawapan anda di sini..."></textarea><br><button class="btn secondary" onclick="toggleAns(${i})">Lihat Cadangan Jawapan</button><div class="answer" id="a${i}">${x[1]}</div></div>`});document.getElementById('written').innerHTML=h}function toggleAns(i){let a=document.getElementById('a'+i);a.style.display=a.style.display==='block'?'none':'block'}prepareQuiz();render();renderWritten();
+</script><script>
+const RESULTS_ENDPOINT='https://script.google.com/macros/s/AKfycbxlFnyUMLUNHGAwFNIRtQBSsOTCklSTBkJQQx5L40dyeG-3LmnUEuoYuslOqOEtmL92/exec';
+const QUIZ_TITLE='Bab 7 Kesultanan Melayu Quiz';
+let resultAttemptSent=false;
+const originalShuffle=typeof shuffleMCQ==='function'?shuffleMCQ:(typeof render==='function'?render:null);
+if(originalShuffle){
+ if(typeof shuffleMCQ==='function'){shuffleMCQ=function(){resultAttemptSent=false;document.getElementById('sendStatus').textContent='';return originalShuffle();};}
+ else {render=function(){resultAttemptSent=false;document.getElementById('sendStatus').textContent='';return originalShuffle();};}
+}
+const params=new URLSearchParams(location.search);
+const selectedStudent=params.get('student');
+if(selectedStudent)document.getElementById('studentName').value=selectedStudent.slice(0,50);
+async function submitAndCheck(btn){
+ const student=document.getElementById('studentName').value.trim();
+ const status=document.getElementById('sendStatus');
+ if(!student){status.textContent='Please enter student nickname first.';document.getElementById('studentName').focus();return;}
+ if(resultAttemptSent){status.textContent='Already submitted this attempt. Shuffle to start another attempt.';return;}
+ const inputs=[...document.querySelectorAll('#mcq input:checked')];
+ const total=quiz.length;
+ if(inputs.length<total&&!confirm('Some questions are unanswered. Submit anyway?'))return;
+ checkMCQ();
+ const score=quiz.reduce((n,q,i)=>{const p=document.querySelector(`input[name=q${i}]:checked`);return n+(p&&q.options[+p.value]?.correct?1:0)},0);
+ btn.disabled=true;status.textContent='Sending result...';
+ const payload={student,subject:'Sejarah',chapter:'Bab 7 · 7.1 & 7.2',quiz:QUIZ_TITLE,score,total};
+ try{
+  await fetch(RESULTS_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+  resultAttemptSent=true;
+  status.textContent=`Submission request sent: ${score}/${total}. Parent: please confirm the new row in Google Sheets.`;
+ }catch(e){status.textContent='Could not send result. Check connection and retry.';}
+ finally{btn.disabled=false;}
+}
+</script></body></html>
